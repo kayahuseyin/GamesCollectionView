@@ -67,10 +67,19 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, CollectionViewCellProtocol {
-    func addToBasket(indexPath: IndexPath) {
+    func addToBasket(indexPath: IndexPath) { // Alert will be added
         
         let game = gameList[indexPath.row]
         print("\(game.gameTitle!) added to the basket")
+        
+        let alertController = UIAlertController(title: "Added to basket", message: "\(game.gameTitle!) is added to the basket", preferredStyle: .alert)
+        
+        let okayAction = UIAlertAction(title: "OK", style: .default)
+        
+        alertController.addAction(okayAction)
+        
+        self.present(alertController, animated: true)
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
